@@ -1,3 +1,1 @@
-{
-  "*.{ts,json,md}": "echo"
-}
+{ "*.{ts,json,md}": "biome check --write" }

@@ -1,0 +1,5 @@
+{
+  "files": { "includes": ["./tsconfig.json", ".lintstagedrc.json", "./src/**", "README.md"] },
+  "formatter": { "lineWidth": 120, "indentStyle": "space", "expand": "never" },
+  "javascript": { "formatter": { "quoteStyle": "single" } }
+}

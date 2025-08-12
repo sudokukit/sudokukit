@@ -2,12 +2,15 @@
   "name": "@sudokukit/core",
   "version": "0.0.0",
   "description": "Generating & Solving Sudoku's",
+  "type": "module",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "build": "tsc",
     "hook:pre-commit": "npm run lint:staged",
     "hook:pre-push": "npm test",
-    "lint:staged": "lint-staged --verbose",
+    "lint:staged": "lint-staged",
+    "lint:all": "biome check --write",
     "test": "echo 'test'",
     "prepare": "husky"
   },
@@ -35,6 +38,7 @@
     "typescript": "^5.9.2"
   },
   "devDependencies": {
+    "@biomejs/biome": "~2.1.4",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.5"
   }
