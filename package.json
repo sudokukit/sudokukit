@@ -1,0 +1,26 @@
+{
+  "name": "@sudokukit/sudokukit",
+  "version": "0.0.0",
+  "description": "Generating & Solving Sudoku's",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sudokukit/sudokukit.git"
+  },
+  "keywords": [
+    "sudoku",
+    "sudokukit",
+    "typescript",
+    "solver",
+    "puzzle"
+  ],
+  "author": "Coen Mooij <coenmooij@gmail.com>",
+  "license": "The Unlicense",
+  "bugs": {
+    "url": "https://github.com/sudokukit/sudokukit/issues"
+  },
+  "homepage": "https://github.com/sudokukit/sudokukit#readme"
+}
