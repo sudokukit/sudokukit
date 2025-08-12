@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
+    "hook:pre-commit": "echo 'pre-commit'",
+    "hook:pre-push": "npm test",
     "test": "echo 'test'",
     "prepare": "husky"
   },
