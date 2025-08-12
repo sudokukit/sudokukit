@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/sudokukit/sudokukit/issues"
   },
-  "homepage": "https://github.com/sudokukit/sudokukit#readme"
+  "homepage": "https://github.com/sudokukit/sudokukit#readme",
+  "dependencies": {
+    "typescript": "^5.9.2"
+  }
 }
