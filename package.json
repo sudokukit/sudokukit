@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "hook:pre-commit": "echo 'pre-commit'",
+    "hook:pre-commit": "npm run lint:staged",
     "hook:pre-push": "npm test",
+    "lint:staged": "lint-staged --verbose",
     "test": "echo 'test'",
     "prepare": "husky"
   },
@@ -34,6 +35,7 @@
     "typescript": "^5.9.2"
   },
   "devDependencies": {
-    "husky": "^9.1.7"
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.5"
   }
 }
