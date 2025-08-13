@@ -19,7 +19,6 @@
     "moduleDetection": "force",
     "skipLibCheck": true,
     "paths": {
-      "@sudokukit/constants": ["constants"],
       "@sudokukit/converters": ["converters"],
       "@sudokukit/generators": ["generators"],
       "@sudokukit/helpers": ["helpers"],

@@ -1,16 +1,15 @@
-import { GRID_SIZE } from '@sudokukit/constants';
 import { generateSolution } from '@sudokukit/generators';
 import { describe, expect, test } from 'vitest';
 
 describe('GenerateSolution', () => {
-  test(`should generate a solution of length ${GRID_SIZE}`, () => {
+  test(`should generate a solution of length 81`, () => {
     const solution: string = generateSolution();
 
-    expect(solution.length).toBe(GRID_SIZE);
+    expect(solution.length).toBe(81);
   });
 
-  test(`measures average performance of generate over 1000 calls`, () => {
-    const numberOfIterations = 1000;
+  test(`measures average performance of generate over 10000 calls`, () => {
+    const numberOfIterations = 10000;
     let totalTime: number = 0;
     for (let i: number = 0; i < numberOfIterations; i++) {
       const start: number = performance.now();
@@ -19,8 +18,9 @@ describe('GenerateSolution', () => {
       totalTime += end - start;
     }
     const average: number = totalTime / numberOfIterations;
-    console.log(`Average time: ${Math.round(average * 1000)} µs`);
+    const microseconds: number = Math.round(average * 1000);
+    console.log(`Average time: ${microseconds} µs`);
 
-    expect(average).toBeLessThan(1); // 1ms
+    expect(microseconds).toBeLessThan(100);
   });
 });

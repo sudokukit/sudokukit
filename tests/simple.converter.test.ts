@@ -1,4 +1,3 @@
-import { GRID_SIZE } from '@sudokukit/constants';
 import { convertSimpleGrid } from '@sudokukit/converters';
 import { GridHelper } from '@sudokukit/helpers';
 import { Grid } from '@sudokukit/types';
@@ -19,8 +18,8 @@ describe('SimpleConverter', () => {
   test('converts a full grid to a string', () => {
     const grid: Grid = GridHelper.newGrid();
 
-    for (let i: number = 0; i < GRID_SIZE; i++) {
-      GridHelper.setSimpleValue(grid, i, Number(SOLUTION[i]));
+    for (let i: number = 0; i < 81; i++) {
+      GridHelper.setValue(grid, i, Number(SOLUTION[i]));
     }
     const string: string = convertSimpleGrid(grid);
 
@@ -30,12 +29,29 @@ describe('SimpleConverter', () => {
   test('converts a partial grid to a string', () => {
     const grid: Grid = GridHelper.newGrid();
 
-    for (let i: number = 0; i < GRID_SIZE; i++) {
+    for (let i: number = 0; i < 81; i++) {
       const value: string = PARTIAL[i];
-      if (value !== '.') GridHelper.setSimpleValue(grid, i, Number(value));
+      if (value !== '.') GridHelper.setValue(grid, i, Number(value));
     }
     const string: string = convertSimpleGrid(grid);
 
     expect(string).toBe(PARTIAL);
+  });
+
+  test(`measures average performance of generate over 1000 calls`, () => {
+    const numberOfIterations = 1000;
+    let totalTime: number = 0;
+    const grid: Grid = GridHelper.newGrid();
+    for (let i: number = 0; i < numberOfIterations; i++) {
+      const start: number = performance.now();
+      convertSimpleGrid(grid);
+      const end: number = performance.now();
+      totalTime += end - start;
+    }
+    const average: number = totalTime / numberOfIterations;
+    const nanoseconds: number = Math.round(average * 1000000);
+    console.log(`Average time: ${nanoseconds} ns`);
+
+    expect(nanoseconds).toBeLessThan(2000);
   });
 });

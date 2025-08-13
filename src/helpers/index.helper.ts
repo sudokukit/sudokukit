@@ -1,13 +1,12 @@
-import { ROW_SIZE } from '@sudokukit/constants';
 import { BOX_INDEX_LUT } from '@sudokukit/luts';
 
 export const IndexHelper = {
   getRow(index: number): number {
-    return Math.floor(index / ROW_SIZE);
+    return Math.floor(index / 9);
   },
 
   getColumn(index: number): number {
-    return index % ROW_SIZE;
+    return index % 9;
   },
 
   getBox(index: number): number {
