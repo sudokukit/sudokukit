@@ -23,6 +23,7 @@
       "@sudokukit/converters": ["converters"],
       "@sudokukit/generators": ["generators"],
       "@sudokukit/helpers": ["helpers"],
+      "@sudokukit/interfaces": ["interfaces"],
       "@sudokukit/luts": ["luts"],
       "@sudokukit/solvers": ["solvers"],
       "@sudokukit/types": ["types"]

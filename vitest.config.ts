@@ -7,6 +7,7 @@ export default defineConfig({
       '@sudokukit/converters': '/src/converters',
       '@sudokukit/generators': '/src/generators',
       '@sudokukit/helpers': '/src/helpers',
+      '@sudokukit/interfaces': '/src/interfaces',
       '@sudokukit/luts': '/src/luts',
       '@sudokukit/solvers': '/src/solvers',
       '@sudokukit/types': '/src/types',

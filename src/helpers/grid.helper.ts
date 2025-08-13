@@ -1,21 +1,22 @@
-import { CellIndices, GRID_SIZE, MAX_VALUE, MIN_VALUE, ValueMask } from '@sudokukit/constants';
+import { GRID_SIZE, MAX_VALUE, MIN_VALUE, ValueMask } from '@sudokukit/constants';
+import { Cell } from '@sudokukit/interfaces';
 import { BOX_LUT, COLUMN_LUT, ROW_LUT } from '@sudokukit/luts';
-import { Bitmask, Cell, Grid } from '@sudokukit/types';
+import { Bitmask, Grid } from '@sudokukit/types';
 import { IndexHelper } from './index.helper';
 
 export const GridHelper = {
   newGrid(): Grid {
     const grid: Grid = new Array<Cell>(GRID_SIZE);
     for (let i: number = 0; i < GRID_SIZE; i++) {
-      grid[i] = [0, ValueMask, ValueMask, [], false];
+      grid[i] = { value: 0, candidates: 0, options: ValueMask, affected: [] };
     }
     return grid;
   },
 
   setSimpleValue(grid: Grid, index: number, newValue: number): boolean {
     const cell: Cell = grid[index];
-    cell[CellIndices.Value] = newValue;
-    cell[CellIndices.Candidates] &= ~(1 << newValue);
+    cell.value = newValue;
+    cell.candidates &= ~(1 << newValue);
 
     const possibleAffectedIndices: number[] = [
       ...ROW_LUT[IndexHelper.getRow(index)],
@@ -25,7 +26,7 @@ export const GridHelper = {
 
     const affectedIndices: number[] | null = this.removeOptions(grid, possibleAffectedIndices, newValue);
 
-    cell[CellIndices.Affected] = affectedIndices ?? [];
+    cell.affected = affectedIndices ?? [];
     return affectedIndices !== null;
   },
 
@@ -36,13 +37,13 @@ export const GridHelper = {
       const cell: Cell = grid[candidateIndices[i]];
 
       // If value is set or option is unset
-      if (cell[CellIndices.Value] !== 0 || (cell[CellIndices.Options] & (1 << value)) === 0) continue;
+      if (cell.value !== 0 || (cell.options & (1 << value)) === 0) continue;
 
-      cell[CellIndices.Options] &= ~(1 << value); // unset option
+      cell.options &= ~(1 << value); // unset option
       affectedIndices.push(candidateIndices[i]); // add candidate to affected
 
       // After operation, if no more options, invalid move, restore and signal back
-      if (cell[CellIndices.Options] === 0) {
+      if (cell.options === 0) {
         this.restoreOptions(grid, affectedIndices, value);
 
         return null;
@@ -56,7 +57,7 @@ export const GridHelper = {
     const length: number = affectedIndices.length;
     for (let i: number = 0; i < length; i++) {
       const cell: Cell = grid[affectedIndices[i]];
-      cell[CellIndices.Options] |= 1 << value;
+      cell.options |= 1 << value;
     }
   },
 

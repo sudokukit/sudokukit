@@ -1,7 +1,8 @@
-import { CellIndices, GRID_SIZE } from '@sudokukit/constants';
+import { GRID_SIZE } from '@sudokukit/constants';
 import { convertSimpleGrid } from '@sudokukit/converters';
 import { GridHelper } from '@sudokukit/helpers';
-import { Cell, Grid } from '@sudokukit/types';
+import { Cell } from '@sudokukit/interfaces';
+import { Grid } from '@sudokukit/types';
 
 export function generateSolution(): string {
   const grid: Grid = GridHelper.newGrid();
@@ -9,22 +10,22 @@ export function generateSolution(): string {
   for (let index: number = 0; index < GRID_SIZE; index++) {
     const cell: Cell = grid[index];
 
-    if (cell[CellIndices.Value] === 0) {
-      cell[CellIndices.Candidates] = cell[CellIndices.Options];
+    if (cell.value === 0) {
+      cell.candidates = cell.options;
     }
 
-    if (cell[CellIndices.Value] > 0) {
-      GridHelper.restoreOptions(grid, cell[CellIndices.Affected], cell[CellIndices.Value]);
-      cell[CellIndices.Affected] = [];
+    if (cell.value > 0) {
+      GridHelper.restoreOptions(grid, cell.affected, cell.value);
+      cell.affected = [];
     }
 
-    if (cell[CellIndices.Candidates] === 0) {
-      cell[CellIndices.Value] = 0;
+    if (cell.candidates === 0) {
+      cell.value = 0;
       index -= 2;
       continue;
     }
 
-    const candidate: number = GridHelper.selectRandomCandidate(cell[CellIndices.Candidates]);
+    const candidate: number = GridHelper.selectRandomCandidate(cell.candidates);
     const result: boolean = GridHelper.setSimpleValue(grid, index, candidate);
 
     if (!result) index--;
