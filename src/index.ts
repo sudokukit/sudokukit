@@ -1,3 +1,1 @@
-export function sudokukit(): string {
-  return 'Sudokukit';
-}
+export * from './generators';

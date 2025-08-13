@@ -11,7 +11,7 @@
     "hook:pre-push": "npm test",
     "lint:staged": "lint-staged",
     "lint:all": "biome check --write",
-    "test": "echo 'test'",
+    "test": "vitest",
     "prepare": "husky"
   },
   "repository": {
@@ -40,6 +40,8 @@
   "devDependencies": {
     "@biomejs/biome": "~2.1.4",
     "husky": "^9.1.7",
-    "lint-staged": "^16.1.5"
+    "lint-staged": "^16.1.5",
+    "vitest": "^3.2.4",
+    "vitest-tsconfig-paths": "^3.4.1"
   }
 }

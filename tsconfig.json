@@ -1,9 +1,14 @@
 {
+  "include": ["src/**/*"],
+  "exclude": ["vitest.config.ts", "tests/**/*"],
   "compilerOptions": {
+    "baseUrl": "./src",
     "rootDir": "./src",
     "outDir": "./dist",
-    "module": "nodenext",
-    "target": "esnext",
+    "module": "ESNext",
+    "target": "ESNext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
@@ -12,6 +17,15 @@
     "strict": true,
     "isolatedModules": true,
     "moduleDetection": "force",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "paths": {
+      "@sudokukit/constants": ["constants"],
+      "@sudokukit/converters": ["converters"],
+      "@sudokukit/generators": ["generators"],
+      "@sudokukit/helpers": ["helpers"],
+      "@sudokukit/luts": ["luts"],
+      "@sudokukit/solvers": ["solvers"],
+      "@sudokukit/types": ["types"]
+    }
   }
 }
