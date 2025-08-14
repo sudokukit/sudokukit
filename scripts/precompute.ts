@@ -45,14 +45,13 @@ function getAffectedIndices(index: number): number[] {
   const boxRow: number = Math.floor(row / 3);
   const boxColumn: number = Math.floor(column / 3);
   const boxIndices: number[] = getBox(boxRow, boxColumn);
-  // get box
 
-  const affectedIndices: number[] = [...rowIndices, ...columnIndices, ...boxIndices];
+  let affectedIndices: number[] = [...rowIndices, ...columnIndices, ...boxIndices];
 
-  // TODO : Check benchmark after initial performance boost
-  // .filter((affectedIndex: number) => affectedIndex > index);
+  affectedIndices = removeDuplicates(affectedIndices);
+  affectedIndices = affectedIndices.filter((affectedIndex: number) => affectedIndex > index);
 
-  return removeDuplicates(affectedIndices);
+  return affectedIndices;
 }
 
 function generateLut(): number[][] {
