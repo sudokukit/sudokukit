@@ -15,6 +15,18 @@ npm i @sudokukit/core
 ## Usage
 
 ## Features
+This library is fully written in Typescript. Which means Webassembly with Rust or C is off the table.
+
+### Implemented
+- Generate Solution
+
+### Not Yet Implemented
+- Solve Puzzle
+- Generate Puzzle
+- Difficulty Assessment
+- Solve for Cell
+- Find Hints
+- etc.
 
 ## Benchmarks
 All benchmarks were done on a 10-core M1 Max Mac Studio.
@@ -22,6 +34,8 @@ All benchmarks were done on a 10-core M1 Max Mac Studio.
 | Benchmark      | per second | per iteration |
 |----------------|------------|---------------|
 | Full Solutions | 50.000     | 20µs          |
+
+* Occassionaly it hits 19µs
 
 ## Optimization Strategy
 The strategies used to optimize are:
@@ -37,6 +51,8 @@ The strategies used to optimize are:
 #### Candidates
 - Recursive lookahead
 - more inlining
+- UInt32Array
+- Separate response type logic
 
 ## Contributing
 
