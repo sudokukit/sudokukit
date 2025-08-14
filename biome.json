@@ -1,11 +1,20 @@
 {
   "files": {
-    "includes": ["./tsconfig.json", "./vitest.config.ts", ".lintstagedrc.json", "./src/**", "./tests/**", "README.md"]
+    "includes": [
+      "./tsconfig.json",
+      "./vitest.config.ts",
+      ".lintstagedrc.json",
+      "./src/**",
+      "./tests/**",
+      "./scripts/**",
+      "./generated/**",
+      "README.md"
+    ]
   },
   "formatter": { "lineWidth": 120, "indentStyle": "space", "expand": "never" },
   "linter": {
     "rules": {
-      "correctness": { "noUnusedImports": { "level": "error", "fix": "safe" } },
+      "correctness": { "noUnusedImports": { "level": "error", "fix": "safe", "options": {} } },
       "style": { "useImportType": "off" }
     }
   },

@@ -1,7 +1,6 @@
 import { Cell } from '@sudokukit/interfaces';
-import { BOX_LUT, COLUMN_LUT, ROW_LUT } from '@sudokukit/luts';
+import { AFFECTED_INDICES } from '@sudokukit/luts';
 import { Grid } from '@sudokukit/types';
-import { IndexHelper } from './index.helper';
 
 export const GridHelper = {
   newGrid(): Grid {
@@ -16,12 +15,7 @@ export const GridHelper = {
     const cell: Cell = grid[index];
     cell.value = value;
 
-    // TODO : One big lookup table to rule them all
-    const possibleAffectedIndices: number[] = [
-      ...ROW_LUT[IndexHelper.getRow(index)],
-      ...COLUMN_LUT[IndexHelper.getColumn(index)],
-      ...BOX_LUT[IndexHelper.getBox(index)],
-    ];
+    const possibleAffectedIndices: number[] = AFFECTED_INDICES[index];
 
     const affectedIndices: number[] | null = this.removeOptions(grid, possibleAffectedIndices, value);
 

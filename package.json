@@ -11,6 +11,7 @@
     "hook:pre-push": "npm test",
     "lint:staged": "lint-staged",
     "lint:all": "biome check --write",
+    "precompute": "tsx scripts/precompute.ts",
     "test": "vitest",
     "prepare": "husky"
   },
@@ -41,6 +42,7 @@
     "@biomejs/biome": "~2.1.4",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.5",
+    "tsx": "^4.20.4",
     "vitest": "^3.2.4",
     "vitest-tsconfig-paths": "^3.4.1"
   }

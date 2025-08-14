@@ -21,7 +21,7 @@ All benchmarks were done on a 10-core M1 Max Mac Studio.
 
 | Benchmark      | per second | per iteration |
 |----------------|------------|---------------|
-| Full Solutions | 26.000     | 39µs          |
+| Full Solutions | 45.000     | 22µs          |
 
 ## Optimization Strategy
 The strategies used to optimize are:
@@ -35,7 +35,8 @@ The strategies used to optimize are:
 
 ### Further Optimization
 - One big LUT to rule them all of affected indices per index
-- check if the lookahead invalidating actually benefits performance
+- Optimistic LUT tables, only worry about empty cells
+- Recursive lookahead
 - inlining even more
 
 ## Contributing
