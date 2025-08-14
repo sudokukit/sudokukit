@@ -9,7 +9,7 @@
     "build": "tsc",
     "hook:pre-commit": "npm run lint:staged",
     "hook:pre-push": "npm test",
-    "lint:staged": "lint-staged",
+    "lint:staged": "lint-staged --allow-empty",
     "lint:all": "biome check --write",
     "precompute": "tsx scripts/precompute.ts",
     "test": "vitest",

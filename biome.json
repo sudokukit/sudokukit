@@ -2,13 +2,12 @@
   "files": {
     "includes": [
       "./tsconfig.json",
-      "./vitest.config.ts",
       ".lintstagedrc.json",
+      "./vitest.config.ts",
       "./src/**",
       "./tests/**",
       "./scripts/**",
-      "./generated/**",
-      "README.md"
+      "./generated/**"
     ]
   },
   "formatter": { "lineWidth": 120, "indentStyle": "space", "expand": "never" },

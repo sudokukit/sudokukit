@@ -29,15 +29,14 @@ The strategies used to optimize are:
 - Hardcoded values over constants (e.g. `9` or `81`)
 - Inlining reusable code (e.g. bitmask operations)
 - basic for loops over `for...of` & `forEach`
-- precomputed lookup tables (luts) for grid positions
+- precomputed lookup table (LUT) for grid indices
 - Lookahead invalidating to avoid cycles
 - Trial & error benchmarking
 
 ### Further Optimization
-- One big LUT to rule them all of affected indices per index
-- Optimistic LUT tables, only worry about empty cells
+#### Candidates
 - Recursive lookahead
-- inlining even more
+- more inlining
 
 ## Contributing
 
