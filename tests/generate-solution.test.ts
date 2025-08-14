@@ -8,8 +8,8 @@ describe('GenerateSolution', () => {
     expect(solution.length).toBe(81);
   });
 
-  test(`measures average performance of generate over 10000 calls`, () => {
-    const numberOfIterations = 10000;
+  test(`measures average performance of generate over 50000 calls`, () => {
+    const numberOfIterations = 50000;
     let totalTime: number = 0;
     for (let i: number = 0; i < numberOfIterations; i++) {
       const start: number = performance.now();
@@ -21,6 +21,6 @@ describe('GenerateSolution', () => {
     const microseconds: number = Math.round(average * 1000);
     console.log(`Average time: ${microseconds} µs`);
 
-    expect(microseconds).toBeLessThan(100);
+    expect(microseconds).toBeLessThan(25);
   });
 });
