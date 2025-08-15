@@ -1,11 +1,8 @@
-import { convertSimpleGrid } from '@sudokukit/converters';
 import { ArrayHelper, BitmaskHelper, GridHelper } from '@sudokukit/helpers';
 import { Cell } from '@sudokukit/interfaces';
 import { Grid } from '@sudokukit/types';
 
-export function generateSolution(): string {
-  const grid: Grid = GridHelper.newGrid();
-
+export function solveEmpty(grid: Grid): void {
   for (let index: number = 0; index < 81; index++) {
     const cell: Cell = grid[index];
 
@@ -30,6 +27,4 @@ export function generateSolution(): string {
 
     if (!result) index--;
   }
-
-  return convertSimpleGrid(grid);
 }

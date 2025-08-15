@@ -33,7 +33,7 @@ All benchmarks were done on a 10-core M1 Max Mac Studio.
 
 | Benchmark      | per second | per iteration |
 |----------------|------------|---------------|
-| Full Solutions | 50.000     | 20µs          |
+| Full Solutions | 53.000     | 19µs          |
 
 * Occassionaly it hits 19µs
 
@@ -52,7 +52,6 @@ The strategies used to optimize are:
 - Recursive lookahead
 - more inlining
 - UInt32Array
-- Separate response type logic
 
 ## Contributing
 

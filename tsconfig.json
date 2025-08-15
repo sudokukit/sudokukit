@@ -20,7 +20,7 @@
     "skipLibCheck": true,
     "paths": {
       "@sudokukit/converters": ["converters"],
-      "@sudokukit/generators": ["generators"],
+      "@sudokukit/functions": ["functions"],
       "@sudokukit/helpers": ["helpers"],
       "@sudokukit/interfaces": ["interfaces"],
       "@sudokukit/luts": ["luts"],
