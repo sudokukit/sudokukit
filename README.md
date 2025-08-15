@@ -33,9 +33,8 @@ All benchmarks were done on a 10-core M1 Max Mac Studio.
 
 | Benchmark      | per second | per iteration |
 |----------------|------------|---------------|
-| Full Solutions | 53.000     | 19µs          |
+| Full Solutions | 62.000     | 16µs          |
 
-* Occassionally it hits 18µs
 
 ## Optimization Strategy
 The strategies used to optimize are:

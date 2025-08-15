@@ -5,4 +5,5 @@ export interface Cell {
   candidates: number[];
   options: Bitmask;
   affected: number[];
+  given: boolean;
 }

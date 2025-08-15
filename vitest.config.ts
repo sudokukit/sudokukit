@@ -5,7 +5,6 @@ export default defineConfig({
     alias: {
       '@sudokukit/converters': '/src/converters',
       '@sudokukit/functions': '/src/functions',
-      '@sudokukit/helpers': '/src/helpers',
       '@sudokukit/interfaces': '/src/interfaces',
       '@sudokukit/luts': '/src/luts',
       '@sudokukit/solvers': '/src/solvers',
