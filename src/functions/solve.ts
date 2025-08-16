@@ -7,6 +7,7 @@ import { shuffle } from './shuffle';
 
 export function solve(grid: Grid): boolean {
   let backtracking: boolean = false;
+
   for (let index: number = 0; index < 81; index++) {
     if (index < 0) return false;
     const cell: Cell = grid[index];
@@ -21,7 +22,7 @@ export function solve(grid: Grid): boolean {
       shuffle(cell.candidates);
     }
 
-    if (cell.value > 0) {
+    if (backtracking && cell.value > 0) {
       restoreCellOptions(grid, cell.affected, cell.value);
       cell.affected = [];
     }

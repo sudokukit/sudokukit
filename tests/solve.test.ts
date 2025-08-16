@@ -1,9 +1,13 @@
-import { newGrid, setGridValue, solve } from '@sudokukit/functions';
-import { Grid } from '@sudokukit/types';
+import { convertGrid, convertToGrid } from '@sudokukit/converters';
+import { MP1, MS1, MS2, SP1, SS1 } from '@sudokukit/data';
+import { newGrid, solve } from '@sudokukit/functions';
+import { Grid, SudokuString } from '@sudokukit/types';
 import { describe, expect, test } from 'vitest';
 
 describe('solve()', () => {
-  test(`should solve an empty grid`, () => {
+  // TODO : Testcase : Add solve returns valid grid
+
+  test(`solve an empty grid`, () => {
     const grid: Grid = newGrid();
     solve(grid);
 
@@ -12,23 +16,50 @@ describe('solve()', () => {
       if (grid[i].value === 0) count++;
     }
     expect(count).toBe(0);
-    // TODO : Check grid is valid
   });
 
-  test(`measures average performance of generate over 10000 calls`, () => {
-    const numberOfIterations = 10000;
-    const start: number = performance.now();
+  test('solve multi puzzle', () => {
+    const grid: Grid = convertToGrid(MP1);
+
+    const result: boolean = solve(grid);
+
+    expect(result).toBe(true);
+
+    const solution: SudokuString = convertGrid(grid);
+    const solutions: SudokuString[] = [MS1, MS2];
+
+    expect(solutions.includes(solution)).toBe(true);
+  });
+
+  test('solve 17 given puzzle', () => {
+    const grid: Grid = convertToGrid(SP1);
+
+    const result: boolean = solve(grid);
+
+    expect(result).toBe(true);
+
+    const solution: SudokuString = convertGrid(grid);
+    expect(solution).toBe(SS1);
+  }, 30000);
+
+  test(`performance with empty grid`, () => {
+    const numberOfIterations = 65000;
+
+    let totalTime: number = 0;
     for (let i: number = 0; i < numberOfIterations; i++) {
       const grid: Grid = newGrid();
-      setGridValue(grid, 0, 1);
+      const start: number = performance.now();
       solve(grid);
+      const end: number = performance.now();
+      totalTime += end - start;
     }
-    const end: number = performance.now();
-    const totalTime: number = end - start;
+
     const average: number = totalTime / numberOfIterations;
     const microseconds: number = Math.round(average * 1000);
+    console.log('solve() - Performance');
     console.log(`Average time: ${microseconds} µs`);
+    console.log(`Total time:   ${Math.round(totalTime)} ms`);
 
-    expect(microseconds).toBeLessThan(25);
+    expect(microseconds).toBeLessThan(20);
   });
 });

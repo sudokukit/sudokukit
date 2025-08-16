@@ -35,7 +35,7 @@ function removeDuplicates(array: number[]): number[] {
   return [...new Set(array)];
 }
 
-function getAffectedIndices(index: number): number[] {
+function getAffectedIndices(index: number, lookahead: boolean): number[] {
   const row: number = Math.floor(index / 9);
   const rowIndices: number[] = getRow(row);
 
@@ -49,23 +49,26 @@ function getAffectedIndices(index: number): number[] {
   let affectedIndices: number[] = [...rowIndices, ...columnIndices, ...boxIndices];
 
   affectedIndices = removeDuplicates(affectedIndices);
-  affectedIndices = affectedIndices.filter((affectedIndex: number) => affectedIndex > index);
+
+  affectedIndices = affectedIndices.filter((affectedIndex: number) =>
+    lookahead ? affectedIndex > index : affectedIndex !== index,
+  );
 
   return affectedIndices;
 }
 
-function generateLut(): number[][] {
+function generateLut(lookahead: boolean = false): number[][] {
   const lut: number[][] = new Array(81);
 
   for (let index: number = 0; index < 81; index++) {
-    lut[index] = getAffectedIndices(index);
+    lut[index] = getAffectedIndices(index, lookahead);
   }
   return lut;
 }
 
-function createJson(filename: string): void {
+function createJson(filename: string, lut: number[][]): void {
   fs.writeFileSync(filename, JSON.stringify(lut, null, 2));
 }
 
-const lut: number[][] = generateLut();
-createJson('generated/lut.json');
+createJson('generated/lookahead.lut.json', generateLut(true));
+createJson('generated/given.lut.json', generateLut());

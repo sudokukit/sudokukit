@@ -1,6 +1,6 @@
 {
-  "include": ["src/**/*"],
-  "exclude": ["vitest.config.ts", "tests/**/*"],
+  "include": ["src/**"],
+  "exclude": ["vitest.config.ts", "tests/**"],
   "compilerOptions": {
     "baseUrl": "./src",
     "rootDir": "./src",
@@ -20,6 +20,7 @@
     "skipLibCheck": true,
     "paths": {
       "@sudokukit/converters": ["converters"],
+      "@sudokukit/data": ["data"],
       "@sudokukit/functions": ["functions"],
       "@sudokukit/interfaces": ["interfaces"],
       "@sudokukit/luts": ["luts"],

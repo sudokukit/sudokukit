@@ -6,7 +6,8 @@ import { setGridValue } from './set-grid-value';
 import { shuffle } from './shuffle';
 
 export function solveEmpty(grid: Grid): void {
-  for (let index: number = 0; index < 81; index++) {
+  setGridValue(grid, 0, Math.floor(Math.random() * 9) + 1);
+  for (let index: number = 1; index < 81; index++) {
     const cell: Cell = grid[index];
 
     if (cell.value === 0) {

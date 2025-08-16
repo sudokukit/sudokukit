@@ -31,10 +31,15 @@ This library is fully written in Typescript. Which means Webassembly with Rust o
 ## Benchmarks
 All benchmarks were done on a 10-core M1 Max Mac Studio.
 
-| Benchmark      | per second | per iteration |
-|----------------|------------|---------------|
-| Full Solutions | 62.000     | 16µs          |
+Results vary a bit depending on what tests are running. Below table are the fastest stable observed results.
 
+| Benchmark     | puzzle     | per second | per iteration |
+|---------------|------------|------------|---------------|
+| solveEmpty()  | empty grid | 66k        | 15µs          |
+| solve()       | empty grid | 66k        | 15µs          |
+| solve()       | 17 givens  | -          | 3s-20s        |
+
+> The 17 givens puzzle time has a range because of its nondeterministic nature 
 
 ## Optimization Strategy
 The strategies used to optimize are:
