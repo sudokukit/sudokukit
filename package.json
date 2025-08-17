@@ -13,7 +13,7 @@
     "lint:staged": "lint-staged --allow-empty",
     "lint:all": "biome check --write",
     "prepublishOnly": "npm run build",
-    "postversion": "git push && git push --tags",
+    "postversion": "git push && git push --tags --no-verify",
     "release:patch": "npm version patch && npm publish",
     "release:minor": "npm version minor && npm publish",
     "release:major": "npm version major && npm publish",
@@ -28,12 +28,12 @@
   "publishConfig": { "access": "public" },
   "bugs": { "url": "https://github.com/sudokukit/sudokukit/issues" },
   "homepage": "https://github.com/sudokukit/sudokukit#readme",
-  "dependencies": { "typescript": "^5.9.2" },
   "devDependencies": {
     "@biomejs/biome": "~2.1.4",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.5",
     "tsx": "^4.20.4",
+    "typescript": "^5.9.2",
     "vitest": "^3.2.4",
     "vitest-tsconfig-paths": "^3.4.1"
   }
