@@ -2,7 +2,8 @@
   "files": {
     "includes": [
       "./tsconfig.json",
-      ".lintstagedrc.json",
+      "./.lintstagedrc.json",
+      "./package.json",
       "./vitest.config.ts",
       "./src/**",
       "./tests/**",

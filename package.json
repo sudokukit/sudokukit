@@ -1,43 +1,34 @@
 {
   "name": "@sudokukit/core",
   "version": "0.0.0",
-  "description": "Generating & Solving Sudoku's",
+  "description": "Generate, Validate & Solve Sudoku Puzzles",
   "type": "module",
   "main": "index.js",
   "types": "index.d.ts",
+  "files": ["dist", "README.md", "LICENSE"],
   "scripts": {
     "build": "tsc",
     "hook:pre-commit": "npm run lint:staged",
     "hook:pre-push": "npm test",
     "lint:staged": "lint-staged --allow-empty",
     "lint:all": "biome check --write",
-    "precompute": "tsx scripts/precompute.ts",
+    "prepublishOnly": "npm run build",
+    "postversion": "git push && git push --tags",
+    "release:patch": "npm version patch && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:major": "npm version major && npm publish",
+    "precompute": "tsx ./scripts/precompute.ts",
     "test": "vitest",
     "prepare": "husky"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sudokukit/sudokukit.git"
-  },
-  "keywords": [
-    "sudoku",
-    "sudokukit",
-    "typescript",
-    "solver",
-    "puzzle"
-  ],
+  "repository": { "type": "git", "url": "git+https://github.com/sudokukit/sudokukit.git" },
+  "keywords": ["sudoku", "sudokukit", "typescript", "solver", "puzzle"],
   "author": "Coen Mooij",
   "license": "The Unlicense",
-  "publishConfig": {
-    "access": "public"
-  },
-  "bugs": {
-    "url": "https://github.com/sudokukit/sudokukit/issues"
-  },
+  "publishConfig": { "access": "public" },
+  "bugs": { "url": "https://github.com/sudokukit/sudokukit/issues" },
   "homepage": "https://github.com/sudokukit/sudokukit#readme",
-  "dependencies": {
-    "typescript": "^5.9.2"
-  },
+  "dependencies": { "typescript": "^5.9.2" },
   "devDependencies": {
     "@biomejs/biome": "~2.1.4",
     "husky": "^9.1.7",
