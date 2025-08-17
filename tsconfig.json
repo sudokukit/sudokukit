@@ -1,6 +1,6 @@
 {
-  "include": ["src/**"],
-  "exclude": ["vitest.config.ts", "tests/**"],
+  "include": ["src/**/*"],
+  "exclude": ["vitest.config.ts", "tests/**/*"],
   "compilerOptions": {
     "baseUrl": "./src",
     "rootDir": "./src",
