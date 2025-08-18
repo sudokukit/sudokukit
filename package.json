@@ -18,9 +18,9 @@
     "lint:all": "biome check --write",
     "prepublishOnly": "npm run build",
     "postversion": "git push && git push --tags --no-verify",
-    "release:patch": "npm run build && npm version patch && npm publish ./dist",
-    "release:minor": "npm run build && npm version minor && npm publish ./dist",
-    "release:major": "npm run build && npm version major && npm publish ./dist",
+    "release:patch": "npm version patch && npm run build && npm publish ./dist",
+    "release:minor": "npm version minor && npm run build && npm publish ./dist",
+    "release:major": "npm version major && npm run build && npm publish ./dist",
     "precompute": "tsx ./scripts/precompute.ts",
     "test": "vitest",
     "prepare": "husky"
