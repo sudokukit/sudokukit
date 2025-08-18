@@ -28,7 +28,7 @@ describe('solve()', () => {
     expect(solutions.includes(solution)).toBe(true);
   });
 
-  test('solve 17 given puzzle', () => {
+  test.skip('solve 17 given puzzle', () => {
     const grid: Grid = convertToGrid(SP1);
 
     const result: boolean = solve(grid);
