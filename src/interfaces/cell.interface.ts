@@ -1,4 +1,4 @@
-import { Bitmask } from '@sudokukit/types';
+import { Bitmask } from '../types';
 
 export interface Cell {
   value: number;

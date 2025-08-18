@@ -1,7 +1,5 @@
-import { convertGrid } from '@sudokukit/converters';
-import { newGrid } from '@sudokukit/functions';
-import { Grid } from '@sudokukit/types';
 import { describe, expect, test } from 'vitest';
+import { convertGrid, Grid, newGrid } from '../src';
 
 const EMPTY: string = '.................................................................................';
 const SOLUTION: string = '589716342634259817271843956856324179412697583397581264723168495968435721145972638';

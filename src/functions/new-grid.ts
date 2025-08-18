@@ -1,5 +1,5 @@
-import { Cell } from '@sudokukit/interfaces';
-import { Grid } from '@sudokukit/types';
+import { Cell } from '../interfaces';
+import { Grid } from '../types';
 
 export function newGrid(): Grid {
   const grid: Grid = new Array<Cell>(81);

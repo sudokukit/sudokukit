@@ -1,3 +1,3 @@
-import { Cell } from '@sudokukit/interfaces';
+import { Cell } from '../interfaces';
 
 export type Grid = Cell[];

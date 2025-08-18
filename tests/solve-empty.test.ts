@@ -1,6 +1,5 @@
-import { newGrid, solveEmpty } from '@sudokukit/functions';
-import { Grid } from '@sudokukit/types';
 import { describe, expect, test } from 'vitest';
+import { Grid, newGrid, solveEmpty } from '../src';
 
 describe('solveEmpty() - Performance', () => {
   test(`performance`, () => {

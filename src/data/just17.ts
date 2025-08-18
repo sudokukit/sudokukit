@@ -1,4 +1,4 @@
-import { SudokuString } from '@sudokukit/types';
+import { SudokuString } from '../types';
 
 export const SP1: SudokuString = '.................1.....2.3......3.2...1.4......5....6..3......4.7..8...962...7...';
 export const SS1: SudokuString = '953168742862734951417952836746893125281645397395271468138529674574386219629417583';

@@ -1,5 +1,5 @@
-import { Cell } from '@sudokukit/interfaces';
-import { Grid } from '@sudokukit/types';
+import { Cell } from '../interfaces';
+import { Grid } from '../types';
 import { restoreCellOptions } from './restore-cell-options';
 
 export function removeCellOptions(grid: Grid, candidateIndices: number[], value: number): number[] | null {

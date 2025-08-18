@@ -1,4 +1,4 @@
-import { Bitmask } from '@sudokukit/types';
+import { Bitmask } from '../types';
 
 export function bitmaskToArray(mask: Bitmask): number[] {
   const array: number[] = [];

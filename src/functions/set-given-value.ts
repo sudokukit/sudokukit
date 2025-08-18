@@ -1,6 +1,6 @@
-import { Cell } from '@sudokukit/interfaces';
-import { GIVEN_AFFECTED_LUT } from '@sudokukit/luts';
-import { Grid } from '@sudokukit/types';
+import { Cell } from '../interfaces';
+import { GIVEN_AFFECTED_LUT } from '../luts';
+import { Grid } from '../types';
 import { removeGivenOptions } from './remove-given-options';
 
 export function setGivenValue(grid: Grid, index: number, value: number): void {

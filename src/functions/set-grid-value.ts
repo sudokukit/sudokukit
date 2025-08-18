@@ -1,5 +1,5 @@
-import { LOOKAHEAD_AFFECTED_INDICES } from '@sudokukit/luts';
-import { Grid } from '@sudokukit/types';
+import { LOOKAHEAD_AFFECTED_INDICES } from '../luts';
+import { Grid } from '../types';
 import { removeCellOptions } from './remove-cell-options';
 
 export function setGridValue(grid: Grid, index: number, value: number): boolean {

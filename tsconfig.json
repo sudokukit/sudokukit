@@ -17,15 +17,6 @@
     "strict": true,
     "isolatedModules": true,
     "moduleDetection": "force",
-    "skipLibCheck": true,
-    "paths": {
-      "@sudokukit/converters": ["converters"],
-      "@sudokukit/data": ["data"],
-      "@sudokukit/functions": ["functions"],
-      "@sudokukit/interfaces": ["interfaces"],
-      "@sudokukit/luts": ["luts"],
-      "@sudokukit/solvers": ["solvers"],
-      "@sudokukit/types": ["types"]
-    }
+    "skipLibCheck": true
   }
 }

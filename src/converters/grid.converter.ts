@@ -1,6 +1,6 @@
-import { newGrid, setGivenValue } from '@sudokukit/functions';
-import { Cell } from '@sudokukit/interfaces';
-import { Grid, SudokuString } from '@sudokukit/types';
+import { newGrid, setGivenValue } from '../functions';
+import { Cell } from '../interfaces';
+import { Grid, SudokuString } from '../types';
 
 export function convertGrid(grid: Grid): SudokuString {
   const values = new Array(81);

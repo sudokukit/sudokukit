@@ -1,8 +1,5 @@
-import { convertGrid, convertToGrid } from '@sudokukit/converters';
-import { MP1, MS1, MS2, SP1, SS1 } from '@sudokukit/data';
-import { newGrid, solve } from '@sudokukit/functions';
-import { Grid, SudokuString } from '@sudokukit/types';
 import { describe, expect, test } from 'vitest';
+import { convertGrid, convertToGrid, Grid, MP1, MS1, MS2, newGrid, SP1, SS1, SudokuString, solve } from '../src';
 
 describe('solve()', () => {
   // TODO : Testcase : Add solve returns valid grid

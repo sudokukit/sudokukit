@@ -1,5 +1,5 @@
-import { Cell } from '@sudokukit/interfaces';
-import { Grid } from '@sudokukit/types';
+import { Cell } from '../interfaces';
+import { Grid } from '../types';
 
 export function removeGivenOptions(grid: Grid, candidateIndices: number[], value: number): void {
   for (const index of candidateIndices) {

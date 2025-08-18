@@ -1,5 +1,5 @@
-import { Cell } from '@sudokukit/interfaces';
-import { Grid } from '@sudokukit/types';
+import { Cell } from '../interfaces';
+import { Grid } from '../types';
 import { bitmaskToArray } from './bitmask-to-array';
 import { restoreCellOptions } from './restore-cell-options';
 import { setGridValue } from './set-grid-value';
