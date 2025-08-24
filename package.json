@@ -1,6 +1,6 @@
 {
   "name": "@sudokukit/core",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Generate, Validate & Solve Sudoku Puzzles",
   "type": "module",
   "main": "index.js",
