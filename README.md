@@ -14,6 +14,53 @@ npm install @sudokukit/core
 
 ## Usage
 
+There are two ways of accessing SudokuKit.
+1. Easy Access
+2. Performance
+
+
+### Easy Access
+
+> [!NOTE]
+> The type `SudokuString` is just a `string` that is assumed to contain a Sudoku.
+> Any string that is not length 81 or contains something other than '.' or '1-9' can & will trigger unwanted behaviour.
+
+```ts
+import { SudokuKit, SudokuString } from '@sudokukit/core';
+
+/** Easy Access Features */
+
+// Generate Solution
+const solution: SudokuString = SudokuKit.generateSolution();
+// e.g. '589716342634259817721843956856324179412697583397581264273168495968435721145972638'
+
+// Generate Multiple Solutions
+const solutions: SudokuString[] = SudokuKit.generateSolutions(10);
+// e.g. ['123...', '456...', ...]
+```
+
+
+### Default Sudoku Representation
+To offer a uniform interface, most sudoku will be represented as a string with length 81, and dots for empty cells. 
+```ts // Example Sudoku
+const sudoku = '.8..13..26.....4.8...8.5.1.........9...264...4...7...5.21...9.4.....1.5.3....7...';
+```
+
+
+#### Generate Puzzle
+#### Solve Puzzle
+#### Validate Puzzle
+#### Get Hints
+
+
+### Performance
+To access all optimized features, SudokuKit exports a number of functions. 
+Function arguments & response types are explicitly particular. 
+To help you with that, we also export conversion functions. 
+You could of course write it yourself using the included types. 
+
+
+
 > [!IMPORTANT]
 > Library is currently 'Early Access', interface will change and easy access features are on the roadmap.
 
