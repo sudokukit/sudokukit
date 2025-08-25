@@ -39,7 +39,7 @@ const generatedSolutions: SudokuString[] = SudokuKit.generateSolutions(10);
 // e.g. ['123...', '456...', ...]
 
 // Solve Sudoku
-const mediumPuzzle: SudokuString = '.8..13..26.....4.8...8.5.1.........9...264...4...7...5.21...9.4.....1.5.3....7...';
+const mediumPuzzle: SudokuString = '..32....6....4..9.1.2...5..7...29....4.3.7.5....81...2..1...8.3.2..8....9....46..';
 const solvedSudoku: SudokuString = SudokuKit.solve(mediumPuzzle);
 // result: '493251786856743291172698534715429368248367159639815472561972843324586917987134625'
 ```
