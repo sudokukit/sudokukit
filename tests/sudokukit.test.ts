@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { SudokuKit, SudokuString } from '../src';
+import { MEDIUM_PUZZLE_1, MEDIUM_SOLUTION_1, SudokuKit, SudokuString } from '../src';
 
 describe('SudokuKit', () => {
   test('generateSolution()', () => {
@@ -13,5 +13,11 @@ describe('SudokuKit', () => {
     const solutions: SudokuString[] = SudokuKit.generateSolutions(3);
 
     expect(solutions.length).toBe(3);
+  });
+
+  test('solve()', () => {
+    const solution: SudokuString = SudokuKit.solve(MEDIUM_PUZZLE_1);
+
+    expect(solution).toBe(MEDIUM_SOLUTION_1);
   });
 });

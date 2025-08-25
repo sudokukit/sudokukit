@@ -1,5 +1,5 @@
-import { convertGrid } from '../converters';
-import { newGrid, solveEmpty } from '../functions';
+import { convertGrid, convertToGrid } from '../converters';
+import { newGrid, solve, solveEmpty } from '../functions';
 import { Grid, SudokuString } from '../types';
 
 export const SudokuKit = {
@@ -16,5 +16,13 @@ export const SudokuKit = {
       solutions[index] = this.generateSolution();
     }
     return solutions;
+  },
+
+  solve(sudoku: SudokuString): SudokuString {
+    const grid: Grid = convertToGrid(sudoku);
+
+    solve(grid);
+
+    return convertGrid(grid);
   },
 };
