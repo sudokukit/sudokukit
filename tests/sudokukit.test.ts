@@ -1,5 +1,12 @@
 import { describe, expect, test } from 'vitest';
-import { MEDIUM_PUZZLE_1, MEDIUM_SOLUTION_1, SudokuKit, SudokuString } from '../src';
+import {
+  MEDIUM_PUZZLE_1,
+  MEDIUM_SOLUTION_1,
+  SudokuKit,
+  SudokuString,
+  WORLDS_HARDEST_SUDOKU_PUZZLE,
+  WORLDS_HARDEST_SUDOKU_SOLUTION,
+} from '../src';
 
 describe('SudokuKit', () => {
   test('generateSolution()', () => {
@@ -19,5 +26,11 @@ describe('SudokuKit', () => {
     const solution: SudokuString = SudokuKit.solve(MEDIUM_PUZZLE_1);
 
     expect(solution).toBe(MEDIUM_SOLUTION_1);
+  });
+
+  test("The World's Hardest Sudoku", () => {
+    const solution: SudokuString = SudokuKit.solve(WORLDS_HARDEST_SUDOKU_PUZZLE);
+
+    expect(solution).toBe(WORLDS_HARDEST_SUDOKU_SOLUTION);
   });
 });

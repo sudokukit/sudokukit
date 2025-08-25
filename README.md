@@ -124,6 +124,7 @@ Results vary a bit depending on what tests are running. Below table are the fast
 | solveEmpty() | empty grid              | 66k        | 15µs          |
 | solve()      | empty grid              | 66k        | 15µs          |
 | solve()      | 17 givens               | -          | 3s-20s        |
+| solve()      | World's Hardest Sudoku  | 475        | 2ms           |
 | multisolve() | 47 givens / 2 solutions | 81k        | 12µs          |
 
 > [!NOTE]

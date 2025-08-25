@@ -1,5 +1,18 @@
 import { describe, expect, test } from 'vitest';
-import { convertGrid, convertToGrid, Grid, MP1, MS1, MS2, newGrid, SP1, SS1, SudokuString, solve } from '../src';
+import {
+  convertGrid,
+  convertToGrid,
+  Grid,
+  MP1,
+  MS1,
+  MS2,
+  newGrid,
+  SP1,
+  SS1,
+  SudokuString,
+  solve,
+  WORLDS_HARDEST_SUDOKU_PUZZLE,
+} from '../src';
 
 describe('solve()', () => {
   // TODO : Testcase : Add solve returns valid grid
@@ -58,5 +71,26 @@ describe('solve()', () => {
     console.log(`Total time:   ${Math.round(totalTime)} ms`);
 
     expect(microseconds).toBeLessThan(20);
+  });
+
+  test(`performance with "World's Hardest Sudoku"`, () => {
+    const numberOfIterations = 475;
+
+    let totalTime: number = 0;
+    for (let i: number = 0; i < numberOfIterations; i++) {
+      const grid: Grid = convertToGrid(WORLDS_HARDEST_SUDOKU_PUZZLE);
+      const start: number = performance.now();
+      solve(grid);
+      const end: number = performance.now();
+      totalTime += end - start;
+    }
+
+    const average: number = totalTime / numberOfIterations;
+    const milliseconds: number = Math.round(average);
+    console.log("solve() - World's Hardest - Performance");
+    console.log(`Average time: ${milliseconds} ms`);
+    console.log(`Total time:   ${Math.round(totalTime)} ms`);
+
+    expect(milliseconds).toBeLessThan(2500);
   });
 });
