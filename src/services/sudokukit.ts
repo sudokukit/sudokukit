@@ -1,5 +1,6 @@
 import { convertGrid, convertToGrid } from '../converters';
-import { newGrid, solve, solveEmpty } from '../functions';
+import { digHoles, newGrid, solve, solveEmpty } from '../functions';
+import { PuzzleOptions } from '../interfaces';
 import { Grid, SudokuString } from '../types';
 
 export const SudokuKit = {
@@ -24,5 +25,16 @@ export const SudokuKit = {
     solve(grid);
 
     return convertGrid(grid);
+  },
+
+  generatePuzzle(options: PuzzleOptions = {}): SudokuString {
+    const grid: Grid = newGrid();
+    solveEmpty(grid);
+    const solution: string = convertGrid(grid);
+
+    const holes: number = options.holes ?? 30;
+    const bound: number = options.bound ?? 3;
+
+    return digHoles(solution, holes, bound);
   },
 };

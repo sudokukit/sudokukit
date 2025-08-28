@@ -42,6 +42,10 @@ const generatedSolutions: SudokuString[] = SudokuKit.generateSolutions(10);
 const mediumPuzzle: SudokuString = '..32....6....4..9.1.2...5..7...29....4.3.7.5....81...2..1...8.3.2..8....9....46..';
 const solvedSudoku: SudokuString = SudokuKit.solve(mediumPuzzle);
 // result: '493251786856743291172698534715429368248367159639815472561972843324586917987134625'
+
+// Generate Puzzle
+const puzzle: SudokuString = SudokuKit.generatePuzzle();
+// e.g. '..32....6....4..9.1.2...5..7...29....4.3.7.5....81...2..1...8.3.2..8....9....46..'
 ```
 
 
@@ -104,14 +108,16 @@ This library is fully written in Typescript. Which means Webassembly with Rust o
 - Solve
 - Multisolve
 - Convert Grid Utility
-
-### Not Yet Implemented
 - Generate Puzzle
-- Difficulty Assessment
+- Easy Access
+- 
+### Not Yet Implemented
+- Out-of-the-box Difficulty Configurations
 - Solve for Cell
 - Find Hints
-- Easy Access
 - Multisolve limit
+- Graded Difficulty Assessment
+- Generate Puzzles based on graded difficulty
 - etc.
 
 ## Benchmarks
@@ -119,13 +125,14 @@ All benchmarks were done on a 10-core M1 Max Mac Studio.
 
 Results vary a bit depending on what tests are running. Below table are the fastest stable observed results.
 
-| Benchmark    | puzzle                  | per second | per iteration |
-|--------------|-------------------------|------------|---------------|
-| solveEmpty() | empty grid              | 66k        | 15µs          |
-| solve()      | empty grid              | 66k        | 15µs          |
-| solve()      | 17 givens               | -          | 3s-20s        |
-| solve()      | World's Hardest Sudoku  | 475        | 2ms           |
-| multisolve() | 47 givens / 2 solutions | 81k        | 12µs          |
+| Benchmark                  | puzzle                  | per second | per iteration |
+|----------------------------|-------------------------|------------|---------------|
+| solveEmpty()               | empty grid              | 66k        | 15µs          |
+| solve()                    | empty grid              | 66k        | 15µs          |
+| solve()                    | 17 givens               | -          | 3s-20s        |
+| solve()                    | World's Hardest Sudoku  | 475        | 2ms           |
+| multisolve()               | 47 givens / 2 solutions | 81k        | 12µs          |
+| SudokuKit.generatePuzzle() | 30 holes, minBound: 3   | 8k         | 126µs         |
 
 > [!NOTE]
 > The 17 givens puzzle time has a wide range because of its nondeterministic nature 
