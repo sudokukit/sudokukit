@@ -4,6 +4,7 @@ import { restoreCellOptions } from './restore-cell-options';
 
 export function removeCellOptions(grid: Grid, candidateIndices: number[], value: number): number[] | null {
   const affectedIndices: number[] = [];
+
   for (let i: number = 0; i < candidateIndices.length; i++) {
     const cell: Cell = grid[candidateIndices[i]];
 

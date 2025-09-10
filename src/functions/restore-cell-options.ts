@@ -2,8 +2,8 @@ import { Cell } from '../interfaces';
 import { Grid } from '../types';
 
 export function restoreCellOptions(grid: Grid, affectedIndices: number[], value: number): void {
-  for (let i: number = 0; i < affectedIndices.length; i++) {
-    const cell: Cell = grid[affectedIndices[i]];
+  for (const affectedIndex of affectedIndices) {
+    const cell: Cell = grid[affectedIndex];
     cell.options |= 1 << value;
   }
 }

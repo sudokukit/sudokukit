@@ -17,10 +17,8 @@ export function canDig(sudoku: SudokuString, index: number, minBound: number): b
 
   let grid: Grid;
 
-  for (let candidateIndex: number = 0; candidateIndex < candidates.length; candidateIndex++) {
-    const value: number = candidates[candidateIndex];
-
-    const candidateSudoku: SudokuString = replaceCharacterAt(sudoku, index, String(value));
+  for (const candidate of candidates) {
+    const candidateSudoku: SudokuString = replaceCharacterAt(sudoku, index, String(candidate));
     grid = convertToGrid(candidateSudoku);
 
     if (solve(grid)) return false;

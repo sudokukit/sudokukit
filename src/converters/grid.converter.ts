@@ -8,7 +8,7 @@ export function convertGrid(grid: Grid): SudokuString {
     const cell: Cell = grid[i];
     values[i] = !cell.value ? '.' : cell.value;
   }
-  return values.join('') as SudokuString;
+  return values.join('');
 }
 
 export function convertToGrid(sudokuString: SudokuString): Grid {
