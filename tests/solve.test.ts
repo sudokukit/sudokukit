@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import {
-  convertGrid,
+  convertFromGrid,
   convertToGrid,
   Grid,
   MP1,
@@ -35,7 +35,7 @@ describe('solve()', () => {
 
     expect(result).toBe(true);
 
-    const solution: SudokuString = convertGrid(grid);
+    const solution: SudokuString = convertFromGrid(grid);
     const solutions: SudokuString[] = [MS1, MS2];
 
     expect(solutions.includes(solution)).toBe(true);
@@ -48,7 +48,7 @@ describe('solve()', () => {
 
     expect(result).toBe(true);
 
-    const solution: SudokuString = convertGrid(grid);
+    const solution: SudokuString = convertFromGrid(grid);
     expect(solution).toBe(SS1);
   }, 30000);
 

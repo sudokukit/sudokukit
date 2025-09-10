@@ -2,7 +2,7 @@ import { newGrid, setGivenValue } from '../functions';
 import { Cell } from '../interfaces';
 import { Grid, SudokuString } from '../types';
 
-export function convertGrid(grid: Grid): SudokuString {
+export function convertFromGrid(grid: Grid): SudokuString {
   const values = new Array(81);
   for (let i: number = 0; i < 81; i++) {
     const cell: Cell = grid[i];

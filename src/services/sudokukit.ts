@@ -1,4 +1,4 @@
-import { convertGrid, convertToGrid } from '../converters';
+import { convertFromGrid, convertToGrid } from '../converters';
 import { digHoles, newGrid, solve, solveEmpty } from '../functions';
 import { PuzzleOptions } from '../interfaces';
 import { Grid, SudokuString } from '../types';
@@ -8,15 +8,7 @@ export const SudokuKit = {
     const grid: Grid = newGrid();
     solveEmpty(grid);
 
-    return convertGrid(grid);
-  },
-
-  generateSolutions(amount: number): SudokuString[] {
-    const solutions: SudokuString[] = new Array(amount);
-    for (let index: number = 0; index < amount; index++) {
-      solutions[index] = this.generateSolution();
-    }
-    return solutions;
+    return convertFromGrid(grid);
   },
 
   solve(sudoku: SudokuString): SudokuString {
@@ -24,13 +16,13 @@ export const SudokuKit = {
 
     solve(grid);
 
-    return convertGrid(grid);
+    return convertFromGrid(grid);
   },
 
   generatePuzzle(options: PuzzleOptions = {}): SudokuString {
     const grid: Grid = newGrid();
     solveEmpty(grid);
-    const solution: string = convertGrid(grid);
+    const solution: string = convertFromGrid(grid);
 
     const holes: number = options.holes ?? 30;
     const bound: number = options.bound ?? 3;

@@ -1,4 +1,4 @@
-import { convertGrid } from '../converters';
+import { convertFromGrid } from '../converters';
 import { Cell } from '../interfaces';
 import { Grid, SudokuString } from '../types';
 import { bitmaskToArray } from './bitmask-to-array';
@@ -57,7 +57,7 @@ export function multisolve(grid: Grid): SudokuString[] {
 }
 
 function addSolutionAndRollback(solutions: SudokuString[], grid: Grid): number {
-  solutions.push(convertGrid(grid));
+  solutions.push(convertFromGrid(grid));
 
   let index: number = indexOfCellWithOptions(grid);
   if (index >= 0) rollback(grid, index);
