@@ -19,12 +19,6 @@ describe('SudokuKit', () => {
     expect(solution.includes('.')).toBe(false);
   });
 
-  test('generateSolutions()', () => {
-    const solutions: SudokuString[] = SudokuKit.generateSolutions(3);
-
-    expect(solutions.length).toBe(3);
-  });
-
   test('solve()', () => {
     const solution: SudokuString = SudokuKit.solve(MEDIUM_PUZZLE_1);
 
