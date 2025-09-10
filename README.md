@@ -1,10 +1,17 @@
 # SudokuKit
-Generate & Solve Sudoku's
+Generate, validate & solve Sudoku. Fast and easy.
 
-## Introduction
-SudokuKit is a fast and correct Sudoku Validator, Solver, and Generator written in Typescript.
+---
 
-Because of performance optimizations the code is not as readable as you would normally expect.
+![NPM License](https://img.shields.io/npm/l/%40sudokukit%2Fcore)
+![NPM Version](https://img.shields.io/npm/v/%40sudokukit%2Fcore)
+![NPM Last Update](https://img.shields.io/npm/last-update/%40sudokukit%2Fcore)
+![NPM Downloads](https://img.shields.io/npm/dm/%40sudokukit%2Fcore)
+![Sonar Quality Gate](https://img.shields.io/sonar/quality_gate/sudokukit_sudokukit?server=https%3A%2F%2Fsonarcloud.io)
+![Sonar Violations](https://img.shields.io/sonar/violations/sudokukit_sudokukit?server=https%3A%2F%2Fsonarcloud.io)
+
+[//]: # (TODO - Code Coverage Badge)
+
 
 ## Installation
 
@@ -160,3 +167,12 @@ The strategies used to optimize are:
 Sudokukit is licensed under the Unlicense.
 
 Basically do whatever you want.
+
+---
+
+[![GitHub](https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=white)](#)
+[![npm](https://img.shields.io/badge/npm-CB3837?logo=npm&logoColor=fff)](#)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff)](#)
+[![Vitest](https://img.shields.io/badge/Vitest-6E9F18?logo=vitest&logoColor=fff)](#)
+[![Codecov](https://img.shields.io/badge/Codecov-F01F7A?logo=codecov&logoColor=fff)](#)
+[![SonarQube Cloud](https://img.shields.io/badge/SonarQube%20Cloud-126ED3?logo=sonarqubecloud&logoColor=fff)](#)
