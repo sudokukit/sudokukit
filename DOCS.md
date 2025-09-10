@@ -71,3 +71,10 @@ const grid: Grid = convertFromGrid(sudoku);
 ## Utility Functions
 
 > Not Yet Implemented
+
+## Has Multiple Solutions
+Sometimes you just want to know if a puzzle has multiple solutions or not.
+
+```typescript
+const hasMultipleSolutions: boolean = hasMultipleSolutions(sudoku);
+```

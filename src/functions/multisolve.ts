@@ -6,7 +6,7 @@ import { restoreCellOptions } from './restore-cell-options';
 import { setGridValue } from './set-grid-value';
 import { shuffle } from './shuffle';
 
-export function multisolve(grid: Grid): SudokuString[] {
+export function multisolve(grid: Grid, limit: number = 100): SudokuString[] {
   let backtracking: boolean = false;
   const solutions: SudokuString[] = [];
 
@@ -23,6 +23,7 @@ export function multisolve(grid: Grid): SudokuString[] {
       if (index < 80) continue;
 
       index = addSolutionAndRollback(solutions, grid);
+      if (limit && solutions.length >= limit) return solutions;
       continue;
     }
 
@@ -51,7 +52,10 @@ export function multisolve(grid: Grid): SudokuString[] {
       continue;
     }
 
-    if (index === 80) index = addSolutionAndRollback(solutions, grid);
+    if (index === 80) {
+      index = addSolutionAndRollback(solutions, grid);
+      if (limit && solutions.length >= limit) return solutions;
+    }
   }
   return solutions;
 }

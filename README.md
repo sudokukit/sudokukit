@@ -1,17 +1,13 @@
-# SudokuKit
-Generate, validate & solve Sudoku. Fast and easy.
-
----
-
 ![NPM License](https://img.shields.io/npm/l/%40sudokukit%2Fcore)
 ![NPM Version](https://img.shields.io/npm/v/%40sudokukit%2Fcore)
 ![NPM Last Update](https://img.shields.io/npm/last-update/%40sudokukit%2Fcore)
 ![NPM Downloads](https://img.shields.io/npm/dm/%40sudokukit%2Fcore)
+![GitHub Repo stars](https://img.shields.io/github/stars/sudokukit/sudokukit?style=flat)
 ![Sonar Quality Gate](https://img.shields.io/sonar/quality_gate/sudokukit_sudokukit?server=https%3A%2F%2Fsonarcloud.io)
 ![Sonar Violations](https://img.shields.io/sonar/violations/sudokukit_sudokukit?server=https%3A%2F%2Fsonarcloud.io)
 
-[//]: # (TODO - Code Coverage Badge)
-
+# SudokuKit
+Generate, Validate & Solve Sudoku. Simple. Fast. Zero Dependencies.
 
 ## Installation
 
@@ -19,154 +15,107 @@ Generate, validate & solve Sudoku. Fast and easy.
 npm install @sudokukit/core
 ```
 
-## Usage
+## Basic Usage
 
-There are two ways of accessing SudokuKit.
-1. Easy Access
-2. Performance
+> [!WARNING] Current documentation does not reflect the codebase. 
+> Consult the npm package readme for docs for that version.
 
+### Input & Output
+A sudoku is represented as an 81-length string, with dots for empty cells.
 
-### Easy Access
-
-> [!NOTE]
-> The type `SudokuString` is just a `string` that is assumed to contain a Sudoku.
-> Any string that is not length 81 or contains something other than '.' or '1-9' can & will trigger unwanted behaviour.
-
-```ts
-import { SudokuKit, SudokuString } from '@sudokukit/core';
-
-/** Easy Access Features */
-
-// Generate Solution
-const generatedSolution: SudokuString = SudokuKit.generateSolution();
-// e.g. '589716342634259817721843956856324179412697583397581264273168495968435721145972638'
-
-// Generate Multiple Solutions
-const generatedSolutions: SudokuString[] = SudokuKit.generateSolutions(10);
-// e.g. ['123...', '456...', ...]
-
-// Solve Sudoku
-const mediumPuzzle: SudokuString = '..32....6....4..9.1.2...5..7...29....4.3.7.5....81...2..1...8.3.2..8....9....46..';
-const solvedSudoku: SudokuString = SudokuKit.solve(mediumPuzzle);
-// result: '493251786856743291172698534715429368248367159639815472561972843324586917987134625'
-
-// Generate Puzzle
-const puzzle: SudokuString = SudokuKit.generatePuzzle();
-// e.g. '..32....6....4..9.1.2...5..7...29....4.3.7.5....81...2..1...8.3.2..8....9....46..'
-```
-
-
-### Default Sudoku Representation
-To offer a uniform interface, most sudoku will be represented as a string with length 81, and dots for empty cells. 
 ```ts // Example Sudoku
 const sudoku = '.8..13..26.....4.8...8.5.1.........9...264...4...7...5.21...9.4.....1.5.3....7...';
 ```
 
+### Generate Puzzle
+Generates an uniquely solvable puzzle.
 
-#### Generate Puzzle
-#### Solve Puzzle
-#### Validate Puzzle
-#### Get Hints
+```typescript
+import { generatePuzzle } from '@sudokukit/core';
 
+const puzzle = generatePuzzle();
+```
 
-### Performance
-To access all optimized features, SudokuKit exports a number of functions. 
-Function arguments & response types are explicitly particular. 
-To help you with that, we also export conversion functions. 
-You could of course write it yourself using the included types. 
+#### Difficulty
 
+There are three ways of setting the difficulty:
+- string-based (e.g. `medium`)
+- constant-based (e.g. `Difficulty.Medium`)
+- object-based (`holes` and/or `minBound`)
 
+```typescript
+import { Difficulty, generatePuzzle } from '@sudokukit/core';
 
-> [!IMPORTANT]
-> Library is currently 'Early Access', interface will change and easy access features are on the roadmap.
+generatePuzzle('medium');
+generatePuzzle(Difficulty.Medium);
+generatePuzzle({ holes: 30, minBound: 3 });
+```
+
+By default it creates a `medium` puzzle.
+
+##### Notes
+> The minimum number of givens of any Sudoku is 17. 
+
+> To remain uniquely solvable, the number of holes can't be guaranteed.
+
+Check [Docs - Difficulty](https://github.com/sudokukit/sudokukit/blob/main/DOCS.md#difficulty) for more information.
+
 
 ### Solve
+Solves any (multi-)solvable puzzle.
+```typescript
+import { solve } from '@sudokukit/core';
 
-```ts
-import { convertGrid, convertToGrid, Grid, solve, SudokuString } from '@sudokukit/core';
-
-const unsolvedSudoku: SudokuString = '.8..13..26.....4.8...8.5.1.........9...264...4...7...5.21...9.4.....1.5.3....7...';
-const grid: Grid = convertToGrid(sudokuString);
-
-solve(grid); // By reference for performance
-
-const solvedSudoku: SudokuString = convertGrid(grid);
+const sudoku = solve(puzzle);
 ```
 
-### Multi Solve
+### Validate
 
-```ts
-import { convertToGrid, Grid, solve, SudokuString } from '@sudokukit/core';
+Check if the supplied sudoku is valid & uniquely solvable.
+```typescript
+import { isValid } from '@sudokukit/core';
 
-const sudokuString: SudokuString = '.8..16..26342.9.1....8..95.8..32417.4.2.9.5833975812.4....6849596..3....1..972.38';
-const grid: Grid = convertToGrid(sudokuString);
-
-const results: SudokuString[] = multisolve(grid);
+const isValid = isValid(sudoku);
 ```
 
-> [!WARNING]
-> Multisolve will keep going. Adding a limit is a feature on the roadmap
+## Advanced Usage
 
-## Features
-This library is fully written in Typescript. Which means Webassembly with Rust or C is off the table.
+### Generate Solution
+Generates a fully solved & valid sudoku.
+```typescript
+import { generateSolution } from '@sudokukit/core';
 
-### Implemented
-- Generate Solution
-- Solve
-- Multisolve
-- Convert Grid Utility
-- Generate Puzzle
-- Easy Access
-- 
-### Not Yet Implemented
-- Out-of-the-box Difficulty Configurations
-- Solve for Cell
-- Find Hints
-- Multisolve limit
-- Graded Difficulty Assessment
-- Generate Puzzles based on graded difficulty
-- etc.
+const sudoku = generateSolution();
+```
 
-## Benchmarks
-All benchmarks were done on a 10-core M1 Max Mac Studio.
+### Find Multiple Solutions
+Solves a puzzle and returns all possible solutions.
 
-Results vary a bit depending on what tests are running. Below table are the fastest stable observed results.
+```typescript
+import { multisolve } from './multisolve';
 
-| Benchmark                  | puzzle                  | per second | per iteration |
-|----------------------------|-------------------------|------------|---------------|
-| solveEmpty()               | empty grid              | 66k        | 15µs          |
-| solve()                    | empty grid              | 66k        | 15µs          |
-| solve()                    | 17 givens               | -          | 3s-20s        |
-| solve()                    | World's Hardest Sudoku  | 475        | 2ms           |
-| multisolve()               | 47 givens / 2 solutions | 81k        | 12µs          |
-| SudokuKit.generatePuzzle() | 30 holes, minBound: 3   | 8k         | 126µs         |
+const solutions = findSolutions(puzzle);
+```
 
-> [!NOTE]
-> The 17 givens puzzle time has a wide range because of its nondeterministic nature 
+## Documentation
+Need more details? Check out the [Docs](https://github.com/sudokukit/sudokukit/blob/main/DOCS.md) for more information. 
 
-## Optimization Strategy
-The strategies used to optimize are:
-- Bitmasks over arrays for cell option state
-- Hardcoded values over constants (e.g. `9` or `81`)
-- Inlining reusable code (e.g. bitmask operations)
-- basic for loops over `for...of` & `forEach`
-- precomputed lookup table (LUT) for grid indices
-- Lookahead invalidating to avoid cycles
-- Trial & error benchmarking
+## Performance
+Check [Performance](https://github.com/sudokukit/sudokukit/blob/main/PERFORMANCE.md) 
+if you want to read more about the algorithms used, learn about optimization strategies, or view benchmark results.
 
-### Further Optimization
-#### Candidates
-- Recursive lookahead
-- more inlining
-- UInt32Array
+## Roadmap
+For version `1.0` the aim is to create a polished set of base features. 
+Topics for upcoming releases are: Hints, Grading & Techniques. 
+Suggestions are welcome.
 
 ## Contributing
+Contributions in any form are welcome! Please create an issue or submit a pull request on 
+[GitHub](https://github.com/sudokukit/sudokukit).
 
 ## License
-
-Sudokukit is licensed under the Unlicense.
-
-Basically do whatever you want.
+Sudokukit is licensed under [The Unlicense](https://unlicense.org/). 
+Free to use, modify, or distribute without restrictions.
 
 ---
 
